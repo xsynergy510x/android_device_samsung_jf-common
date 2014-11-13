@@ -1,5 +1,3 @@
-ifeq ($(TARGET_PROVIDES_CAMERA_HAL),true)
-
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
@@ -35,6 +33,9 @@ ifeq ($(TARGET_NEED_PREVIEW_SIZE_FIXUP),true)
     LOCAL_CFLAGS += -DPREVIEW_SIZE_FIXUP
 endif
 
+LOCAL_C_INCLUDES += \
+    system/media/camera/include
+
 LOCAL_SRC_FILES := \
     CameraWrapper.cpp
 
@@ -46,5 +47,3 @@ LOCAL_MODULE := camera.msm8960
 LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_SHARED_LIBRARY)
-
-endif
