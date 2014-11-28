@@ -83,6 +83,7 @@ BOARD_HARDWARE_CLASS += device/samsung/jf-common/cmhw
 # Display
 BOARD_EGL_CFG := device/samsung/jf-common/configs/egl.cfg
 COMMON_GLOBAL_CFLAGS += -DNEW_ION_API
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 TARGET_DISPLAY_USE_RETIRE_FENCE := true
 TARGET_NO_INITLOGO := true
