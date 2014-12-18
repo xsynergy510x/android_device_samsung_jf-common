@@ -172,9 +172,6 @@ BOARD_SEPOLICY_UNION += \
     vold.te \
     wpa.te
 
-# Time services
-BOARD_USES_QC_TIME_SERVICES := true
-
 # Vendor Init
 TARGET_UNIFIED_DEVICE := true
 TARGET_INIT_VENDOR_LIB := libinit_jflte
