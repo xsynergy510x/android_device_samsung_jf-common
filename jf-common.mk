@@ -292,5 +292,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0
 
+# Prebuilt APKs
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/apks/AdAway.apk:system/app/AdAway/AdAway.apk \
+    $(LOCAL_PATH)/apks/NovaLauncher.apk:system/priv-app/NovaLauncher/NovaLauncher.apk
+
 # Common Qualcomm
 $(call inherit-product, device/samsung/qcom-common/qcom-common.mk)
