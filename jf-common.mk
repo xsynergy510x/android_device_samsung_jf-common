@@ -294,7 +294,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Prebuilt APKs
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/apks/AdAway-release_Build-Mar.21.2015.apk:system/app/AdAway/AdAway.apk \
+    $(LOCAL_PATH)/apks/AdAway-release_Build-Apr.09.2015.apk:system/app/AdAway/AdAway.apk \
     $(LOCAL_PATH)/apks/NovaLauncher.apk:system/priv-app/NovaLauncher/NovaLauncher.apk
 
 # Common Qualcomm
