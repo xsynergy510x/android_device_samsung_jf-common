@@ -195,8 +195,8 @@ BOARD_GLOBAL_CPPFLAGS += --param l1-cache-line-size=32 --param l1-cache-size=32 
 # Board already specifies -mcpu, but it won't hurt to add mtune, too
 # Krait architecture is most like cortex-a15
 BOARD_GLOBAL_CFLAGS += -mtune=cortex-a15
-BOARD_GLOBAL_CPPLAGS += -mtune=cortex-a15
+BOARD_GLOBAL_CPPFLAGS += -mtune=cortex-a15
 
 # Hint the compiler that we're using quad-core CPU
 BOARD_GLOBAL_CFLAGS += -mvectorize-with-neon-quad
-BOARD_GLOBAL_CPPLAGS += -mvectorize-with-neon-quad
+BOARD_GLOBAL_CPPFLAGS += -mvectorize-with-neon-quad
