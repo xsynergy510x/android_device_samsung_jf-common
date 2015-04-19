@@ -189,8 +189,8 @@ WIFI_DRIVER_FW_PATH_STA := "/system/etc/wifi/bcmdhd_sta.bin"
 
 # Compiler optimizations inspired by JustArchi
 # Specify cache sizes, values tuned for the Snapdragon S600 APQ8064AB
-BOARD_GLOBAL_CFLAGS += --param l1-cache-line-size=32 --param l1-cache-size=16 --param l2-cache-size=2048
-BOARD_GLOBAL_CPPLAGS += --param l1-cache-line-size=32 --param l1-cache-size=16 --param l2-cache-size=2048
+BOARD_GLOBAL_CFLAGS += --param l1-cache-line-size=32 --param l1-cache-size=32 --param l2-cache-size=2048
+BOARD_GLOBAL_CPPFLAGS += --param l1-cache-line-size=32 --param l1-cache-size=32 --param l2-cache-size=2048
 
 # Board already specifies -mcpu, but it won't hurt to add mtune, too
 # Krait architecture is most like cortex-a15
