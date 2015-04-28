@@ -255,7 +255,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # media
 PRODUCT_PROPERTY_OVERRIDES += \
-    lpa.decode=true \
+    lpa.decode=false \
     mm.enable.smoothstreaming=true
 
 # nitz
