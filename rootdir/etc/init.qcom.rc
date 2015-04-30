@@ -749,7 +749,6 @@ on property:sys.perf.profile=0
     write /sys/devices/system/cpu/cpufreq/conservative/up_threshold 90
     write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor ondemand
     write /sys/module/msm_thermal/core_control/enabled 1
-    start mpdecision
 
 # Balanced
 on property:sys.perf.profile=1
@@ -777,7 +776,6 @@ on property:sys.perf.profile=1
     write /sys/devices/system/cpu/cpufreq/intelliactive/up_threshold_any_cpu_load 70
     write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor ondemand
     write /sys/module/msm_thermal/core_control/enabled 1
-    start mpdecision
 
 # High performance
 on property:sys.perf.profile=2
