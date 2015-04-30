@@ -622,27 +622,11 @@ on property:sys.boot_completed=1
     write /sys/module/msm_dcvs/cores/gpu0/slack_time_max_us 20000
     write /sys/module/msm_dcvs/cores/gpu0/slack_time_min_us 20000
     write /sys/module/msm_dcvs/cores/gpu0/slack_mode_dynamic 0
-    # Set msm_mpdecision parameters
-    write /sys/module/msm_mpdecision/slack_time_max_us 45000
-    write /sys/module/msm_mpdecision/slack_time_min_us 15000
-    write /sys/module/msm_mpdecision/em_win_size_min_us 100000
-    write /sys/module/msm_mpdecision/em_win_size_max_us 1000000
-    write /sys/module/msm_mpdecision/online_util_pct_min 3
-    write /sys/module/msm_mpdecision/online_util_pct_max 25
-    write /sys/module/msm_mpdecision/em_max_util_pct 97
-    write /sys/module/msm_mpdecision/rq_avg_poll_ms 2
-    write /sys/module/msm_mpdecision/mp_em_rounding_point_min 10
-    write /sys/module/msm_mpdecision/mp_em_rounding_point_max 85
-    write /sys/module/msm_mpdecision/iowait_threshold_pct 50
     # Set permissions for the nodes needed by display on/off hook
     chown system system /sys/module/msm_dcvs/cores/cpu0/slack_time_max_us
     chown system system /sys/module/msm_dcvs/cores/cpu0/slack_time_min_us
-    chown system system /sys/module/msm_mpdecision/slack_time_max_us
-    chown system system /sys/module/msm_mpdecision/slack_time_min_us
     chmod 664 /sys/module/msm_dcvs/cores/cpu0/slack_time_max_us
     chmod 664 /sys/module/msm_dcvs/cores/cpu0/slack_time_min_us
-    chmod 664 /sys/module/msm_mpdecision/slack_time_max_us
-    chmod 664 /sys/module/msm_mpdecision/slack_time_min_us
     write /sys/module/cpu_boost/parameters/boost_ms 10
     write /sys/module/cpu_boost/parameters/input_boost_ms 10
     write /sys/module/cpu_boost/parameters/sync_threshold 1242000
@@ -731,7 +715,6 @@ on property:persist.sys.ssr.restart_level=3
 
 # Powersave
 on property:sys.perf.profile=0
-    stop mpdecision
     write /sys/module/msm_thermal/core_control/enabled 0
     write /sys/devices/system/cpu/cpu0/online 1
     write /sys/devices/system/cpu/cpu1/online 1
@@ -750,11 +733,9 @@ on property:sys.perf.profile=0
     write /sys/devices/system/cpu/cpufreq/conservative/up_threshold 90
     write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor ondemand
     write /sys/module/msm_thermal/core_control/enabled 1
-    start mpdecision
 
 # Balanced
 on property:sys.perf.profile=1
-    stop mpdecision
     write /sys/module/msm_thermal/core_control/enabled 0
     write /sys/devices/system/cpu/cpu0/online 1
     write /sys/devices/system/cpu/cpu1/online 1
@@ -778,7 +759,6 @@ on property:sys.perf.profile=1
     write /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_load 70
     write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor ondemand
     write /sys/module/msm_thermal/core_control/enabled 1
-    start mpdecision
 
 # High performance
 on property:sys.perf.profile=2

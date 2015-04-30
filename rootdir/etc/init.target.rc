@@ -287,11 +287,6 @@ service thermal-engine /system/bin/thermal-engine
     user root
     group root
 
-service mpdecision /system/bin/mpdecision --avg_comp
-    user root
-    group root system
-    disabled
-
 service kickstart /system/bin/qcks -i /firmware-mdm/image/
     user root
     group radio cache inet misc audio sdcard_rw log system
