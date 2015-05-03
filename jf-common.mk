@@ -295,5 +295,25 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/apks/AdAway-release_Build-Apr.09.2015.apk:system/app/AdAway/AdAway.apk \
     $(LOCAL_PATH)/apks/NovaLauncher.apk:system/priv-app/NovaLauncher/NovaLauncher.apk
 
+# System Properties Optimizations
+PRODUCT_PROPERTY_OVERRIDES += \
+    pm.sleep.mode=1 \
+    wifi.supplicant_scan_interval=180 \
+    windowsmgr.max_events_per_sec=150 \
+    debug.performance.tuning=1 \
+    ro.ril.power_collapse=1 \
+    persist.service.lgospd.enable=0 \
+    persist.service.pcsync.enable=0 \
+    ro.facelock.black_timeout=400 \
+    ro.facelock.det_timeout=1500 \
+    ro.facelock.rec_timeout=2500 \
+    ro.facelock.lively_timeout=2500 \
+    ro.facelock.est_max_time=600 \
+    ro.facelock.use_intro_anim=false \
+    dalvik.vm.profiler=1 \
+    dalvik.vm.isa.arm.features=lpae,div \
+    dalvik.vm.image-dex2oat-filter=everything \
+    dalvik.vm.dex2oat-filter=everything
+
 # Common Qualcomm
 $(call inherit-product, device/samsung/qcom-common/qcom-common.mk)
