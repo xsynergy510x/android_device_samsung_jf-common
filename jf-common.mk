@@ -314,5 +314,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.image-dex2oat-filter=everything \
     dalvik.vm.dex2oat-filter=everything
 
+# Radio properties for each jf variant
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/radio/gsm.prop:install/radio/gsm.prop \
+    $(LOCAL_PATH)/radio/vzw.prop:install/radio/vzw.prop \
+    $(LOCAL_PATH)/radio/spr.prop:install/radio/spr.prop \
+    $(LOCAL_PATH)/radio/usc.prop:install/radio/usc.prop 
+
 # Common Qualcomm
 $(call inherit-product, device/samsung/qcom-common/qcom-common.mk)
