@@ -136,12 +136,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     lights.msm8960
 
-# Loki
-PRODUCT_PACKAGES += \
-    loki_tool \
-    loki.sh \
-    loki_bootloaders \
-    recovery-transform.sh
+# Loki - Use prebuilt loki patch
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/releasetools/loki.sh:install/loki/loki.sh \
+    $(LOCAL_PATH)/releasetools/loki_tool:install/loki/loki_tool \
+    $(LOCAL_PATH)/releasetools/loki_bootloaders:install/loki/loki_bootloaders
 
 # Media
 PRODUCT_COPY_FILES += \

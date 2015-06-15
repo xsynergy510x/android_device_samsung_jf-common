@@ -26,7 +26,7 @@ def FullOTA_InstallEnd(info):
   info.script.script = [cmd for cmd in info.script.script if not "boot.img" in cmd]
   info.script.script = [cmd for cmd in info.script.script if not "show_progress(0.100000, 0);" in cmd]
   info.script.AppendExtra('package_extract_file("boot.img", "/tmp/boot.img");')
-  info.script.AppendExtra('assert(run_program("/sbin/sh", "/system/etc/loki.sh") == 0);')
+  info.script.AppendExtra('assert(run_program("/sbin/sh", "/tmp/install/loki/loki.sh") == 0);')
   info.script.AppendExtra('ifelse(is_substring("I337", getprop("ro.bootloader")), run_program("/sbin/sh", "-c", "busybox cp -R /tmp/install/blobs/gsm/* /system/"));')
   info.script.AppendExtra('ifelse(is_substring("I337", getprop("ro.bootloader")), run_program("/sbin/sh", "-c", "busybox cat /tmp/install/radio/gsm.prop >> /system/build.prop"));')
   info.script.AppendExtra('ifelse(is_substring("I545", getprop("ro.bootloader")), run_program("/sbin/sh", "-c", "busybox cp -R /tmp/install/vzw/* /system/"));')
