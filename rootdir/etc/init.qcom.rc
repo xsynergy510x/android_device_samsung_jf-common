@@ -773,9 +773,6 @@ on property:sys.perf.profile=2
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor performance
     write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor performance
 
-# Set Intelli-plug parameters
-    write /sys/module/intelli_plug/parameters/intelli_plug_active 1
-
 on charger
     mount_all fstab.qcom
     class_start charger
