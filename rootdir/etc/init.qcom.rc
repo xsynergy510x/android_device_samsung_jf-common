@@ -584,10 +584,10 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 162000
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 162000
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq 162000
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 1998000
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 1998000
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 1998000
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 1998000
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 1890000
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 1890000
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 1890000
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 1890000
     write /sys/module/msm_thermal/core_control/enabled 1
     chown root system /sys/devices/system/cpu/mfreq
     chmod 220 /sys/devices/system/cpu/mfreq
@@ -739,7 +739,6 @@ on property:sys.perf.profile=0
     write /sys/devices/system/cpu/cpufreq/conservative/sampling_rate_min 160000
     write /sys/devices/system/cpu/cpufreq/conservative/up_threshold 90
     write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor simple
-    write /sys/class/kgsl/kgsl-3d0/max_gpuclk 360000000
     write /sys/module/msm_thermal/core_control/enabled 1
     write /sys/module/intelli_plug/parameters/intelli_plug_active 1
 
@@ -768,7 +767,6 @@ on property:sys.perf.profile=1
     write /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_freq 810000
     write /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_load 70
     write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor simple
-    write /sys/class/kgsl/kgsl-3d0/max_gpuclk 360000000
     write /sys/module/msm_thermal/core_control/enabled 1
     write /sys/module/intelli_plug/parameters/intelli_plug_active 1
 
@@ -784,7 +782,6 @@ on property:sys.perf.profile=2
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor performance
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor performance
     write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor performance
-    write /sys/class/kgsl/kgsl-3d0/max_gpuclk 600000000
 
 on charger
     mount_all fstab.qcom
