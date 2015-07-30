@@ -197,10 +197,9 @@ WIFI_DRIVER_FW_PATH_STA := "/system/etc/wifi/bcmdhd_sta.bin"
 BOARD_GLOBAL_CFLAGS += --param l1-cache-line-size=32 --param l1-cache-size=32 --param l2-cache-size=2048
 BOARD_GLOBAL_CPPFLAGS += --param l1-cache-line-size=32 --param l1-cache-size=32 --param l2-cache-size=2048
 
-# Board already specifies -mcpu, but it won't hurt to add mtune, too
 # Krait architecture is most like cortex-a15
-BOARD_GLOBAL_CFLAGS += -mtune=cortex-a15
-BOARD_GLOBAL_CPPFLAGS += -mtune=cortex-a15
+BOARD_GLOBAL_CFLAGS += -mcpu=cortex-a15 -mtune=cortex-a15
+BOARD_GLOBAL_CPPFLAGS += -mcpu=cortex-a15 -mtune=cortex-a15
 
 # Hint the compiler that we're using quad-core CPU
 BOARD_GLOBAL_CFLAGS += -mvectorize-with-neon-quad
