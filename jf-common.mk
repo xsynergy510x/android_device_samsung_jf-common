@@ -246,7 +246,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.use_se_table_only=1 \
     rild.libpath=/system/lib/libsec-ril.so \
     ro.telephony.ril.config=newDriverCallU,newDialCode \
-    ro.ril.telephony.mqanelements=6
+    ro.ril.telephony.mqanelements=6 \
+    ro.telephony.mms_data_profile=5
 
 # gps
 PRODUCT_PROPERTY_OVERRIDES += \
