@@ -308,6 +308,18 @@ service qseecomd /system/bin/qseecomd
     user system
     group system
 
+service boot_trim /system/bin/boot_trim
+    user root
+    group shell
+    disabled
+    oneshot
+
+service boot_sqlite3 /system/bin/boot_sqlite3
+    user root
+    group shell
+    disabled
+    oneshot
+
 # Start kickstart if mdm is detected
 on property:ro.baseband=mdm
     mkdir /data/qcks 0770 system system
@@ -329,6 +341,10 @@ on property:sys.boot_completed=1
 
     # disable pulsing led on boot complete
     write /sys/class/sec/led/led_pattern 0
+
+    # Run custom services at boot
+    start boot_trim
+    start boot_sqlite3
 
 # insthk
 service insthk /system/bin/insthk
