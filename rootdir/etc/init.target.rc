@@ -341,11 +341,8 @@ service time_daemon /system/bin/time_daemon
     user root
     group root
 
-# SISO-ANDR-PERF :: START Changing scheduler to row after boot complete
+# Run custom services at boot
 on property:sys.boot_completed=1
-    write /sys/block/mmcblk0/queue/scheduler row
-
-    # Run custom services at boot
     start boot_trim
     start boot_sqlite3
 
