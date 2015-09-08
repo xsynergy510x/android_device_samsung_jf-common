@@ -134,6 +134,11 @@ static char * camera_fixup_getparams(int id, const char * settings)
     params.set(android::CameraParameters::KEY_MAX_EXPOSURE_COMPENSATION, "4");
 #endif
 
+    /* Remove HDR on rear cam */
+    if (id != 1) {
+        params.set(android::CameraParameters::KEY_SUPPORTED_SCENE_MODES, "auto,action,night,sunset,party");
+    }
+
     /* Enforce video-snapshot-supported to true */
     params.set(android::CameraParameters::KEY_VIDEO_SNAPSHOT_SUPPORTED, "true");
 
