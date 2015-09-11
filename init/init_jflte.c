@@ -113,8 +113,6 @@ void vendor_load_properties()
         property_set("ro.build.description", "jfltevzw-user 5.0.1 LRX22C I545VRUGOC1 release-keys");
         property_set("ro.product.model", "SCH-I545");
         property_set("ro.product.device", "jfltevzw");
-        property_set("ro.cdma.home.operator.alpha", "Verizon");
-        property_set("ro.cdma.home.operator.numeric", "311480");
         property_set("ro.telephony.get_imsi_from_sim", "true");
     } else if (strstr(bootloader, "I9505G")) {
         /* jgedlte */
