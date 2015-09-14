@@ -201,6 +201,12 @@ PRODUCT_PACKAGES += \
     init.target.rc \
     ueventd.qcom.rc
 
+# Custom boot services
+PRODUCT_PACKAGES += \
+    boot_google_leds \
+    boot_sqlite3  \
+    boot_trim
+
 # SamsungServiceMode
 PRODUCT_PACKAGES += \
     SamsungServiceMode

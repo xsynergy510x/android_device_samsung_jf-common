@@ -54,7 +54,7 @@ on boot
     start qcamerasvr
 
     # enable custom led on boot
-    start google_leds
+    start boot_google_leds
 
 on post-fs-data
     mkdir /data/tombstones 0771 system system
@@ -308,19 +308,19 @@ service qseecomd /system/bin/qseecomd
     user system
     group system
 
-service boot_trim /system/bin/boot_trim
+service boot_google_leds /system/etc/boot_google_leds
     user root
     group shell
     disabled
     oneshot
 
-service boot_sqlite3 /system/bin/boot_sqlite3
+service boot_sqlite3 /system/etc/boot_sqlite3
     user root
     group shell
     disabled
     oneshot
 
-service google_leds /system/bin/google_leds
+service boot_trim /system/etc/boot_trim
     user root
     group shell
     disabled
@@ -343,8 +343,8 @@ service time_daemon /system/bin/time_daemon
 
 # Run custom services at boot
 on property:sys.boot_completed=1
-    start boot_trim
     start boot_sqlite3
+    start boot_trim
 
 # insthk
 service insthk /system/bin/insthk

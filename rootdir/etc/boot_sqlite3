@@ -1,0 +1,78 @@
+#!/system/bin/sh
+# Vacuum and reindex sqlite databases on boot
+
+LOGCAT="log -p i -t boot_sqlite3"
+LOG=/data/local/logs/boot_sqlite3.log
+
+sleep 60
+$LOGCAT "Running boot_sqlite3..."
+
+# Check if log dir exists
+if [ ! -d /data/local/logs ]; then
+	$LOGCAT "Error: /data/local/logs not found!"
+	mkdir -p /data/local/logs
+	SUCCESS=$?
+	if [[ $SUCCESS != 0 ]]; then
+		$LOGCAT "Error: Unable to create /data/local/logs!"
+	fi
+fi
+	
+# Create LOGCAT file
+date > $LOG;
+	
+# Check if LOGCATfile was created properly
+if [ ! -e $LOG ]; then
+	$LOGCAT "Error: Unable to create log file!"
+else
+	$LOGCAT "Creating new LOG file"
+	echo "Creating new LOG file" | tee -a $LOG
+fi
+	
+$LOGCAT "Executing SQlite3!"
+echo "Executing SQlite3!" | tee -a $LOG
+	
+$LOGCAT "Beginning /data optimization"
+echo "Beginning /data optimization" | tee -a $LOG
+COUNT=0;
+for i in \
+`find /data -iname "*.db"`;
+do \
+	echo "Optimizing $i" | tee -a $LOG
+	/system/xbin/sqlite3 $i 'VACUUM;'
+	SUCCESS=$?
+	if [[ $SUCCESS != 0 ]]; then
+		echo "Couldn't vaccuum $i" | tee -a $LOG
+	fi
+	/system/xbin/sqlite3 $i 'REINDEX;'
+	SUCCESS=$?
+	if [[ $SUCCESS != 0 ]]; then
+		echo "Couldn't re-index $i" | tee -a $LOG
+	fi
+	COUNT=$((COUNT+1));
+done;
+$LOGCAT "Optimized $COUNT /data databases"
+echo "Optimized $COUNT /data databases" | tee -a $LOG
+	
+$LOGCAT "Beginning /sdcard optimization"
+echo "\nBeginning /sdcard optimization" | tee -a $LOG
+COUNT=0;
+for i in \
+`find /sdcard -iname "*.db"`;
+do \
+	echo "Optimized $i" | tee -a $LOG
+	/system/xbin/sqlite3 $i 'VACUUM;'
+	SUCCESS=$?
+	if [[ $SUCCESS != 0 ]]; then
+		echo "Couldn't vaccuum $i" | tee -a $LOG
+	fi
+	/system/xbin/sqlite3 $i 'REINDEX;'
+	SUCCESS=$?
+	if [[ $SUCCESS != 0 ]]; then
+		echo "Couldn't re-index $i" | tee -a $LOG
+	fi
+	COUNT=$((COUNT+1));
+done;
+$LOGCAT "Optimized $COUNT /sdcard databases"
+echo "Optimized $COUNT /sdcard databases\n" | tee -a $LOG
+
+$LOGCAT "SQlite3 optimization complete!"
