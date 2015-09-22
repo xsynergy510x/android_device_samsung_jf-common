@@ -187,3 +187,11 @@ WIFI_BAND := 802_11_ABG
 WIFI_DRIVER_FW_PATH_AP := "/system/etc/wifi/bcmdhd_apsta.bin"
 WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/dhd/parameters/firmware_path"
 WIFI_DRIVER_FW_PATH_STA := "/system/etc/wifi/bcmdhd_sta.bin"
+
+ # Hint the compiler that we're using quad-core CPU
+ BOARD_GLOBAL_CFLAGS := -mvectorize-with-neon-quad
+ BOARD_GLOBAL_CPPFLAGS := -mvectorize-with-neon-quad
+
+# Specify cache sizes, values tuned for the Snapdragon S600 APQ8064AB
+BOARD_GLOBAL_CFLAGS += --param l1-cache-line-size=16 --param l1-cache-size=16 --param l2-cache-size=2048
+BOARD_GLOBAL_CPPFLAGS += --param l1-cache-line-size=16 --param l1-cache-size=16 --param l2-cache-size=2048
