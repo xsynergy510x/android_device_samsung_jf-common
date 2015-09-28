@@ -79,6 +79,13 @@ BOARD_CHARGER_SHOW_PERCENTAGE := true
 # CMHW
 BOARD_HARDWARE_CLASS += device/samsung/jf-common/cmhw
 
+# Dex Pre-optimization
+ifeq ($(HOST_OS),linux)
+  ifeq ($(WITH_DEXPREOPT),)
+    WITH_DEXPREOPT := true
+  endif
+endif
+
 # Display
 BOARD_USES_LEGACY_MMAP := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
