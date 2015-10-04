@@ -87,11 +87,6 @@ on property:sys.perf.profile=0
     write /sys/devices/system/cpu/cpufreq/conservative/up_threshold 90
     write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor simple
     write /sys/module/msm_thermal/core_control/enabled 1
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1350000
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 1350000
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 1350000
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 1350000
-    write /sys/class/kgsl/kgsl-3d0/max_gpuclk 200000000
     write /sys/module/intelli_plug/parameters/nr_run_profile_sel 2
     write /sys/module/intelli_plug/parameters/intelli_plug_active 1
 
@@ -107,22 +102,17 @@ on property:sys.perf.profile=1
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor interactive
-    write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay "20000 1026000:40000 1674000:20000"
+    write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay "20000 1400000:40000 1700000:20000"
     write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 90
     write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1026000
     write /sys/devices/system/cpu/cpufreq/interactive/io_is_busy 1
     write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 40000
-    write /sys/devices/system/cpu/cpufreq/interactive/sync_freq 1026000
-    write /sys/devices/system/cpu/cpufreq/interactive/target_loads "85 1350000:90 1674000:70"
+    write /sys/devices/system/cpu/cpufreq/interactive/max_freq_hysteresis 100000
+    write /sys/devices/system/cpu/cpufreq/interactive/target_loads "85 1500000:90 1800000:70"
     write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 30000
     write /sys/devices/system/cpu/cpufreq/interactive/timer_slack 30000
     write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor simple
     write /sys/module/msm_thermal/core_control/enabled 1
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1674000
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 1674000
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 1674000
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 1674000
-    write /sys/class/kgsl/kgsl-3d0/max_gpuclk 320000000
     write /sys/module/intelli_plug/parameters/nr_run_profile_sel 0
     write /sys/module/intelli_plug/parameters/intelli_plug_active 1
 
@@ -137,12 +127,7 @@ on property:sys.perf.profile=2
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor performance
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor performance
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor performance
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1890000
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 1890000
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 1890000
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 1890000
     write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor performance
-    write /sys/class/kgsl/kgsl-3d0/max_gpuclk 450000000
 
 on property:sys.boot_completed=1
     write /sys/module/rpm_resources/enable_low_power/L2_cache 1
@@ -233,9 +218,10 @@ on property:sys.boot_completed=1
     chmod 664 /sys/module/msm_dcvs/cores/cpu0/slack_time_min_us
     chmod 664 /sys/module/msm_mpdecision/slack_time_max_us
     chmod 664 /sys/module/msm_mpdecision/slack_time_min_us
+    # Configure cpu-boost module
     write /sys/module/cpu_boost/parameters/boost_ms 20
     write /sys/module/cpu_boost/parameters/input_boost_ms 500
-    write /sys/module/cpu_boost/parameters/sync_threshold 1674000
+    write /sys/module/cpu_boost/parameters/sync_threshold 1566000
     write /sys/module/cpu_boost/parameters/input_boost_freq 1026000
 
     # Set iosched
@@ -243,3 +229,6 @@ on property:sys.boot_completed=1
 
     # Set performance profile
     setprop sys.perf.profile 1
+
+    # Enable Adaptive LMK
+    write /sys/module/lowmemorykiller/parameters/adaptive_lmk 1
