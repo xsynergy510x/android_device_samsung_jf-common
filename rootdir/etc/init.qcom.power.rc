@@ -231,4 +231,4 @@ on property:sys.boot_completed=1
     setprop sys.perf.profile 1
 
     # Enable Adaptive LMK
-    write /sys/module/lowmemorykiller/parameters/adaptive_lmk 1
+    write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
