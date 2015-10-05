@@ -85,7 +85,11 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/bluetooth/bcm4335_prepatch.hcd:system/vendor/firmware/bcm4335_prepatch.hcd
+    $(LOCAL_PATH)/bluetooth/bcm4335_prepatch.hcd:system/vendor/firmware/bcm4335_prepatch.hcd \
+    $(LOCAL_PATH)/rootdir/bin/init.qcom.bt.sh:system/bin/init.qcom.bt.sh \
+    $(LOCAL_PATH)/rootdir/bin/sapd:system/bin/sapd \
+    $(LOCAL_PATH)/rootdir/etc/init.qcom.btdun.sh:system/etc/init.qcom.btdun.sh \
+    $(LOCAL_PATH)/rootdir/etc/init.qcom.coex.sh:system/etc/init.qcom.coex.sh
 
 # Camera Wrapper
 PRODUCT_PACKAGES += \
