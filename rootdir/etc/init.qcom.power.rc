@@ -221,8 +221,8 @@ on property:sys.boot_completed=1
     # Configure cpu-boost module
     write /sys/module/cpu_boost/parameters/boost_ms 20
     write /sys/module/cpu_boost/parameters/input_boost_ms 500
-    write /sys/module/cpu_boost/parameters/sync_threshold 1566000
-    write /sys/module/cpu_boost/parameters/input_boost_freq 1026000
+    write /sys/module/cpu_boost/parameters/sync_threshold 1350000
+    write /sys/module/cpu_boost/parameters/input_boost_freq 918000
 
     # Set iosched
     setprop sys.io.scheduler bfq
