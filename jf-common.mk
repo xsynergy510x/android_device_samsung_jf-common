@@ -251,9 +251,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # media
 PRODUCT_PROPERTY_OVERRIDES += \
-    qcom.hw.aac.encoder=true \
-    mm.enable.smoothstreaming=true \
-    mm.enable.qcom_parser=33395
+    qcom.hw.aac.encoder=true
 
 # radio
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -274,6 +272,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.qc.sdk.izat.premium_enabled=0 \
     ro.qc.sdk.izat.service_mask=0x0 \
     persist.gps.qc_nlp_in_use=0
+
+# media
+PRODUCT_PROPERTY_OVERRIDES += \
+    mm.enable.smoothstreaming=true
 
 # nitz
 PRODUCT_PROPERTY_OVERRIDES += \
