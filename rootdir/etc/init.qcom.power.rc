@@ -25,10 +25,6 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-on early-init
-    setprop sys.io.scheduler noop
-    setprop sys.perf.profile 2
-
 on boot
     trigger enable-low-power
 
