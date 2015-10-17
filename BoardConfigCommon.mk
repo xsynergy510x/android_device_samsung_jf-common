@@ -138,7 +138,7 @@ BOARD_RIL_CLASS := ../../../device/samsung/jf-common/ril
 # Vendor Init
 TARGET_UNIFIED_DEVICE := true
 TARGET_INIT_VENDOR_LIB := libinit_jflte
-TARGET_LIBINIT_DEFINES_FILE := device/samsung/jf-common/init/init_jflte.c
+TARGET_LIBINIT_DEFINES_FILE := device/samsung/jf-common/init/init_jflte.cpp
 
 # Vold
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true

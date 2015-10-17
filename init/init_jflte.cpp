@@ -35,7 +35,7 @@
 #include "util.h"
 
 void gsm_properties();
-void cdma_properties(char cdma_sub[]);
+void cdma_properties(const char* cdma_sub);
 
 void vendor_load_properties()
 {
@@ -164,7 +164,7 @@ void gsm_properties()
     property_set("ro.telephony.default_network", "9");
 }
 
-void cdma_properties(char cdma_sub[])
+void cdma_properties(const char* cdma_sub)
 {
     property_set("ro.telephony.default_cdma_sub", cdma_sub);
     property_set("ro.gps.set_privacy", "1");
