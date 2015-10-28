@@ -1,6 +1,0 @@
-
-# system.prop for i9505, M919, i337 and i337M
-#
-
-telephony.lteOnGsmDevice=1
-ro.telephony.default_network=9

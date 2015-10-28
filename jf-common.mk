@@ -315,12 +315,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0
 
-# Radio properties for each jf variant
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/radio/gsm.prop:install/radio/gsm.prop \
-    $(LOCAL_PATH)/radio/vzw.prop:install/radio/vzw.prop \
-    $(LOCAL_PATH)/radio/spr.prop:install/radio/spr.prop \
-    $(LOCAL_PATH)/radio/usc.prop:install/radio/usc.prop 
-
 # Common Qualcomm
 $(call inherit-product, device/samsung/qcom-common/qcom-common.mk)
