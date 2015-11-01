@@ -221,6 +221,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.enable_boot_charger_mode=1
 
+# dex2oat
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.sys.fw.dex2oat_thread_count=4
+
 # display
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196608 \
