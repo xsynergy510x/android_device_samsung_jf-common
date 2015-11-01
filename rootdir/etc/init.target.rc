@@ -58,6 +58,7 @@ on boot
 
 on post-fs-data
     mkdir /data/tombstones 0771 system system
+    mkdir /data/qcks 0771 system system
     mkdir /tombstones/modem 0771 system system
     mkdir /tombstones/lpass 0771 system system
     mkdir /tombstones/wcnss 0771 system system
@@ -323,7 +324,6 @@ service google_leds /system/bin/google_leds
 
 # Start kickstart if mdm is detected
 on property:ro.baseband=mdm
-    mkdir /data/qcks 0770 system system
     start kickstart
 
 # Start up mdm_helper if sglte detected
