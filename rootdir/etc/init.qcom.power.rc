@@ -46,7 +46,7 @@ on property:sys.boot_completed=1
     
 on enable-low-power
     # Set Adaptive LMK vmpressure
-    write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 40960
+    write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 53059
 
     write /sys/module/rpm_resources/enable_low_power/L2_cache 1
     write /sys/module/rpm_resources/enable_low_power/pxo 1
