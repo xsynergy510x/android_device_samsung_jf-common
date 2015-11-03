@@ -1,0 +1,43 @@
+#
+# Set CPU Governor properties here
+#
+
+on property:sys.cpu.governor=conservative
+    write /sys/devices/system/cpu/cpufreq/conservative/down_threshold 50
+    write /sys/devices/system/cpu/cpufreq/conservative/freq_step 10
+    write /sys/devices/system/cpu/cpufreq/conservative/ignore_nice_load 1
+    write /sys/devices/system/cpu/cpufreq/conservative/sampling_down_factor 1
+    write /sys/devices/system/cpu/cpufreq/conservative/sampling_rate 160000
+    write /sys/devices/system/cpu/cpufreq/conservative/sampling_rate_min 160000
+    write /sys/devices/system/cpu/cpufreq/conservative/up_threshold 90
+
+on property:sys.cpu.governor=interactive
+    write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay "20000 1134000:80000 1458000:20000 1890000:40000"
+    write /sys/devices/system/cpu/cpufreq/interactive/align_windows 1
+    write /sys/devices/system/cpu/cpufreq/interactive/boost 0
+    write /sys/devices/system/cpu/cpufreq/interactive/boostpulse_duration 80000
+    write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 99
+    write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1134000
+    write /sys/devices/system/cpu/cpufreq/interactive/io_is_busy 1
+    write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 40000
+    write /sys/devices/system/cpu/cpufreq/interactive/max_freq_hysteresis 100000
+    write /sys/devices/system/cpu/cpufreq/interactive/target_loads "85 1242000:90 1458000:95 1890000:97"
+    write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 20000
+    write /sys/devices/system/cpu/cpufreq/interactive/timer_slack 20000
+
+on property:sys.cpu.governor=intelliactive
+    write /sys/devices/system/cpu/cpufreq/intelliactive/above_hispeed_delay "20000 1134000:80000 1458000:20000 1890000:40000"
+    write /sys/devices/system/cpu/cpufreq/intelliactive/boost 0
+    write /sys/devices/system/cpu/cpufreq/intelliactive/boostpulse_duration 80000
+    write /sys/devices/system/cpu/cpufreq/intelliactive/go_hispeed_load 99
+    write /sys/devices/system/cpu/cpufreq/intelliactive/hispeed_freq 1242000
+    write /sys/devices/system/cpu/cpufreq/intelliactive/io_is_busy 1
+    write /sys/devices/system/cpu/cpufreq/intelliactive/min_sample_time 40000
+    write /sys/devices/system/cpu/cpufreq/intelliactive/sampling_down_factor 100000
+    write /sys/devices/system/cpu/cpufreq/intelliactive/sync_freq 810000
+    write /sys/devices/system/cpu/cpufreq/intelliactive/target_loads "85 1242000:90 1458000:95 1890000:97"
+    write /sys/devices/system/cpu/cpufreq/intelliactive/timer_rate 20000
+    write /sys/devices/system/cpu/cpufreq/intelliactive/timer_slack 20000
+    write /sys/devices/system/cpu/cpufreq/intelliactive/two_phase_freq "1350000,1350000,1350000,1350000"
+    write /sys/devices/system/cpu/cpufreq/intelliactive/up_threshold_any_cpu_freq 1134000
+    write /sys/devices/system/cpu/cpufreq/intelliactive/up_threshold_any_cpu_load 90
