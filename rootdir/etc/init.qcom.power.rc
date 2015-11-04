@@ -25,14 +25,13 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-import init.governor.rc
+# import init.governor.rc
 
 on boot
     trigger enable-low-power
 
 on property:sys.boot_completed=1
     setprop sys.io.scheduler row
-    setprop sys.perf.profile 1
 
     # Disable Interactive boost at boot
     write /sys/devices/system/cpu/cpufreq/interactive/boost 0
@@ -75,7 +74,18 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu2/online 1
     write /sys/devices/system/cpu/cpu3/online 1
 
+    write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay "20000 1134000:80000 1458000:20000 1890000:40000"
+    write /sys/devices/system/cpu/cpufreq/interactive/align_windows 1
     write /sys/devices/system/cpu/cpufreq/interactive/boost 1
+    write /sys/devices/system/cpu/cpufreq/interactive/boostpulse_duration 80000
+    write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 99
+    write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1134000
+    write /sys/devices/system/cpu/cpufreq/interactive/io_is_busy 1
+    write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 40000
+    write /sys/devices/system/cpu/cpufreq/interactive/max_freq_hysteresis 100000
+    write /sys/devices/system/cpu/cpufreq/interactive/target_loads "85 1242000:90 1458000:95 1890000:97"
+    write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 20000
+    write /sys/devices/system/cpu/cpufreq/interactive/timer_slack 20000
 
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 384000
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 384000
@@ -195,41 +205,3 @@ on charger
     write /sys/devices/system/cpu/cpu1/online 0
     write /sys/devices/system/cpu/cpu2/online 0
     write /sys/devices/system/cpu/cpu3/online 0
-
-# Powersave
-on property:sys.perf.profile=0
-    write /sys/module/intelli_plug/parameters/nr_run_profile_sel 2
-
-    write /sys/devices/system/cpu/cpu0/online 1
-    write /sys/devices/system/cpu/cpu1/online 1
-    write /sys/devices/system/cpu/cpu2/online 0
-    write /sys/devices/system/cpu/cpu3/online 0
-
-    setprop sys.cpu.governor conservative
-
-    write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor simple
-
-# Balanced
-on property:sys.perf.profile=1
-    write /sys/module/intelli_plug/parameters/nr_run_profile_sel 0
-
-    write /sys/devices/system/cpu/cpu0/online 1
-    write /sys/devices/system/cpu/cpu1/online 1
-    write /sys/devices/system/cpu/cpu2/online 1
-    write /sys/devices/system/cpu/cpu3/online 1
-
-    setprop sys.cpu.governor intelliactive
-
-    write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor simple
-
-# High performance
-on property:sys.perf.profile=2
-
-    write /sys/devices/system/cpu/cpu0/online 1
-    write /sys/devices/system/cpu/cpu1/online 1
-    write /sys/devices/system/cpu/cpu2/online 1
-    write /sys/devices/system/cpu/cpu3/online 1
-
-    setprop sys.cpu.governor performance
-
-    write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor performance
