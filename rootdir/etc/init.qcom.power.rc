@@ -201,23 +201,20 @@ on charger
 
 # Powersave
 on property:sys.perf.profile=0
-    write /sys/module/intelli_plug/parameters/intelli_plug_active 0
+    write /sys/module/intelli_plug/parameters/nr_run_profile_sel 2
 
     write /sys/devices/system/cpu/cpu0/online 1
     write /sys/devices/system/cpu/cpu1/online 1
-    write /sys/devices/system/cpu/cpu2/online 1
-    write /sys/devices/system/cpu/cpu3/online 1
+    write /sys/devices/system/cpu/cpu2/online 0
+    write /sys/devices/system/cpu/cpu3/online 0
 
     setprop sys.cpu.governor conservative
 
     write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor simple
 
-    write /sys/module/intelli_plug/parameters/nr_run_profile_sel 2
-    write /sys/module/intelli_plug/parameters/intelli_plug_active 1
-
 # Balanced
 on property:sys.perf.profile=1
-    write /sys/module/intelli_plug/parameters/intelli_plug_active 0
+    write /sys/module/intelli_plug/parameters/nr_run_profile_sel 0
 
     write /sys/devices/system/cpu/cpu0/online 1
     write /sys/devices/system/cpu/cpu1/online 1
@@ -228,12 +225,8 @@ on property:sys.perf.profile=1
 
     write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor simple
 
-    write /sys/module/intelli_plug/parameters/nr_run_profile_sel 0
-    write /sys/module/intelli_plug/parameters/intelli_plug_active 1
-
 # High performance
 on property:sys.perf.profile=2
-    write /sys/module/intelli_plug/parameters/intelli_plug_active 0
 
     write /sys/devices/system/cpu/cpu0/online 1
     write /sys/devices/system/cpu/cpu1/online 1
