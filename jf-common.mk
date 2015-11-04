@@ -210,10 +210,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     SamsungServiceMode
 
-# Stlport
-PRODUCT_PACKAGES += \
-    libstlport
-
 # USB
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
