@@ -41,7 +41,6 @@ void cdma_properties(char cdma_sub[], char default_network[],
     property_set("persist.eons.enabled", "false");
     property_set("persist.radio.snapshot_enabled", "1");
     property_set("persist.radio.snapshot_timer", "22");
-    property_set("rild.libpath", "/system/lib/libsec-ril.so");
     property_set("ro.cdma.home.operator.numeric", op_numeric);
     property_set("ro.cdma.home.operator.alpha", op_alpha);
     property_set("ro.gps.set_privacy", "1");
@@ -50,12 +49,16 @@ void cdma_properties(char cdma_sub[], char default_network[],
     property_set("telephony.lteOnCdmaDevice", "1");
 }
 
+void common_properties()
+{
+    property_set("rild.libargs", "-d /dev/smd0");
+    property_set("rild.libpath", "/system/lib/libsec-ril.so");
+}
 
 void gsm_properties()
 {
-    property_set("rild.libpath", "/system/lib/libril-qc-qmi-1.so");
-    property_set("ro.telephony.default_network", "9");
     property_set("telephony.lteOnGsmDevice", "1");
+    property_set("ro.telephony.default_network", "9");
 }
 
 void vendor_load_properties()
@@ -69,7 +72,7 @@ void vendor_load_properties()
     if (!rc || strncmp(platform, ANDROID_TARGET, PROP_VALUE_MAX))
         return;
 
-    property_set("rild.libargs", "-d /dev/smd0");
+    common_properties();
 
     property_get("ro.bootloader", bootloader);
 
