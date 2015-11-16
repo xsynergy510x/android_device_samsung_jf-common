@@ -285,7 +285,7 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
 
 service mpdecision /system/bin/mpdecision --avg_comp
     user root
-    group system
+    group root system
     disabled
 
 service kickstart /system/bin/qcks -i /firmware-mdm/image/
