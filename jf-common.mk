@@ -297,7 +297,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # qualcomm
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.timed.enable=true \
-    ro.vendor.extension_library=libqti-perfd-client.so
+    ro.vendor.extension_library=/system/lib/libqc-opt.so
 
 # recovery
 PRODUCT_PROPERTY_OVERRIDES += \
