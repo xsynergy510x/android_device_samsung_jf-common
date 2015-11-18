@@ -239,10 +239,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.speaker.location=high \
     ro.qc.sdk.audio.fluencetype=fluence
 
-# camera
-PRODUCT_PROPERTY_OVERRIDES += \
-    camera2.portability.force_api=1
-
 # charging mode
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.enable_boot_charger_mode=1
