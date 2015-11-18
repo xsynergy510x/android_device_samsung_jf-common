@@ -29,6 +29,7 @@
 
 on boot
     trigger enable-low-power
+    stop mpdecision
 
 on property:sys.boot_completed=1
     setprop sys.io.scheduler row
