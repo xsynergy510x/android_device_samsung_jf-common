@@ -1,4 +1,3 @@
-#ifneq ($(BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE),)
 ifneq ($(BUILD_TINY_ANDROID),true)
 
 LOCAL_PATH := $(call my-dir)
@@ -9,10 +8,6 @@ LOCAL_MODULE := libloc_core
 LOCAL_MODULE_OWNER := qcom
 
 LOCAL_MODULE_TAGS := optional
-
-ifeq ($(TARGET_DEVICE),apq8026_lw)
-LOCAL_CFLAGS += -DPDK_FEATURE_SET
-endif
 
 LOCAL_SHARED_LIBRARIES := \
     libutils \
@@ -46,12 +41,11 @@ LOCAL_COPY_HEADERS:= \
     UlpProxyBase.h \
     gps_extended_c.h \
     gps_extended.h \
-    loc_core_log.h \
-    LocAdapterProxyBase.h
+    loc_core_log.h
 
 LOCAL_PRELINK_MODULE := false
 
 include $(BUILD_SHARED_LIBRARY)
 
 endif # not BUILD_TINY_ANDROID
-#endif # BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE
+
