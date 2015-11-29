@@ -87,6 +87,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/bluetooth/bcm4335_prepatch.hcd:system/vendor/firmware/bcm4335_prepatch.hcd
 
+# Boot LED pattern
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/bin/boot_leds:system/bin/boot_leds
+
 # Camera Wrapper
 PRODUCT_PACKAGES += \
     camera.msm8960
