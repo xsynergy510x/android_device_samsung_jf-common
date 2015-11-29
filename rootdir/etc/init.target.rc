@@ -48,6 +48,9 @@ on fs
     # Symlink hack to fix RIL crashes
     symlink /data/data/com.android.providers.telephony/shared_prefs/preferred-apn1.xml /data/data/com.android.providers.telephony/shared_prefs/preferred-apn.xml
 
+    # TRIM filesystem
+    start boot_trim
+
 on boot
     write /sys/devices/i2c-3/3-0024/cyttsp_update_fw 1
     write /sys/devices/i2c-3/3-005b/update_fw 1
@@ -310,6 +313,18 @@ service boot_leds /system/bin/boot_leds
     disabled
     oneshot
 
+service boot_sqlite /system/bin/boot_sqlite
+    user root
+    group shell
+    disabled
+    oneshot
+
+service boot_trim /system/bin/boot_trim
+    user root
+    group shell
+    disabled
+    oneshot
+
 # Start kickstart if mdm is detected
 on property:ro.baseband=mdm
     start kickstart
@@ -334,3 +349,6 @@ service insthk /system/bin/insthk
 
 on property:sys.qseecomd.enable=true
     start insthk
+
+on property:sys.boot_completed=1
+    start boot_sqlite
