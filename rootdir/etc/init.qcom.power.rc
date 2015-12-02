@@ -31,6 +31,9 @@ on early-init
 on boot
     trigger enable-low-power
 
+on property:sys.boot_completed=1
+    write /sys/devices/system/cpu/cpufreq/interactive/boost 0
+
 on charger
     mount ext4 /dev/block/platform/msm_sdcc.1/by-name/system /system wait ro
     copy /system/etc/battery_charging_temp.data /sys/class/power_supply/battery/batt_temp_table
@@ -101,6 +104,7 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu1/online 1
     write /sys/devices/system/cpu/cpu2/online 1
     write /sys/devices/system/cpu/cpu3/online 1
+    write /sys/devices/system/cpu/cpufreq/interactive/boost 1
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
