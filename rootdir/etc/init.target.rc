@@ -45,6 +45,9 @@ on fs
     chown system radio /dev/block/platform/msm_sdcc.1/by-name
     chmod 0775 /dev/block/platform/msm_sdcc.1/by-name
 
+    # Symlink hack to fix RIL crashes
+    symlink /data/data/com.android.providers.telephony/shared_prefs/preferred-apn1.xml /data/data/com.android.providers.telephony/shared_prefs/preferred-apn.xml
+
     # TRIM filesystem
     start boot_trim
 
