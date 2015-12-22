@@ -180,6 +180,6 @@ on enable-low-power
     write /sys/module/cpu_boost/parameters/input_boost_freq 1134000
 
     # Set iosched
-    setprop sys.io.scheduler bfq
+    setprop sys.io.scheduler row
 
     rm /data/system/perfd/default_values
