@@ -104,6 +104,7 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu1/online 1
     write /sys/devices/system/cpu/cpu2/online 1
     write /sys/devices/system/cpu/cpu3/online 1
+    # interactive
     write /sys/devices/system/cpu/cpufreq/interactive/boost 1
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
@@ -113,13 +114,15 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 384000
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 384000
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq 384000
-    write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay "20000 1134000:80000 1458000:20000 1890000:40000"
-    write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 99
+    write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay "20000 1400000:40000 1700000:20000"
+    write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 90
     write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1134000
     write /sys/devices/system/cpu/cpufreq/interactive/io_is_busy 1
+    write /sys/devices/system/cpu/cpufreq/interactive/max_freq_hysteresis 100000
     write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 40000
     write /sys/devices/system/cpu/cpufreq/interactive/sampling_down_factor 100000
-    write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 20000
+    write /sys/devices/system/cpu/cpufreq/interactive/target_loads "85 1500000:90 1800000:70"
+    write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 30000
     write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor ondemand
 
     chown root system /sys/devices/system/cpu/mfreq
@@ -174,10 +177,14 @@ on enable-low-power
     chmod 664 /sys/module/msm_dcvs/cores/cpu0/slack_time_min_us
     chmod 664 /sys/module/msm_mpdecision/slack_time_max_us
     chmod 664 /sys/module/msm_mpdecision/slack_time_min_us
-    write /sys/module/cpu_boost/parameters/boost_ms 10
-    write /sys/module/cpu_boost/parameters/input_boost_ms 10
-    write /sys/module/cpu_boost/parameters/sync_threshold 1242000
+    # sched
+    write /dev/cpuctl/cpu.notify_on_migrate 1
+    # cpu-boost
+    write /sys/module/cpu_boost/parameters/boost_ms 20
     write /sys/module/cpu_boost/parameters/input_boost_freq 1134000
+    write /sys/module/cpu_boost/parameters/input_boost_ms 500
+    write /sys/module/cpu_boost/parameters/load_based_syncs 1
+    write /sys/module/cpu_boost/parameters/migration_load_threshold 20
 
     # Set iosched
     setprop sys.io.scheduler row
