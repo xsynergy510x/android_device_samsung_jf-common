@@ -32,7 +32,11 @@ on boot
     trigger enable-low-power
 
 on property:sys.boot_completed=1
+    # Disable Interactive thread boosting
     write /sys/devices/system/cpu/cpufreq/interactive/boost 0
+
+    # Enable Intelli-plug on boot
+    write /sys/module/intelli_plug/parameters/intelli_plug_active 1
 
 on charger
     mount ext4 /dev/block/platform/msm_sdcc.1/by-name/system /system wait ro
