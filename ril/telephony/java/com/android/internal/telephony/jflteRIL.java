@@ -62,6 +62,7 @@ public class jflteRIL extends RIL implements CommandsInterface {
     private AudioManager mAudioManager;
 
     private Object mSMSLock = new Object();
+    private boolean setPreferredNetworkTypeSeen = false;
     private boolean mIsSendingSMS = false;
     protected boolean isGSM = false;
     private static final int RIL_REQUEST_DIAL_EMERGENCY = 10001;
@@ -679,5 +680,18 @@ public class jflteRIL extends RIL implements CommandsInterface {
           failCause.vendorCause = p.readString();
         }
         return failCause;
+    }
+
+    @Override
+    public void setPreferredNetworkType(int networkType , Message response) {
+        riljLog("setPreferredNetworkType: " + networkType);
+
+        if (!setPreferredNetworkTypeSeen) {
+            riljLog("Need to reboot modem!");
+            setRadioPower(false, null);
+            setPreferredNetworkTypeSeen = true;
+        }
+
+        super.setPreferredNetworkType(networkType, response);
     }
 }
