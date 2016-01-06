@@ -59,6 +59,7 @@ import com.android.internal.telephony.uicc.IccCardStatus;
  */
 public class jflteRIL extends RIL implements CommandsInterface {
 
+    private boolean setPreferredNetworkTypeSeen = false;
     private AudioManager mAudioManager;
 
     private Object mSMSLock = new Object();
@@ -67,7 +68,7 @@ public class jflteRIL extends RIL implements CommandsInterface {
     private static final int RIL_REQUEST_DIAL_EMERGENCY = 10001;
     public static final long SEND_SMS_TIMEOUT_IN_MS = 30000;
 
-    public jflteRIL(Context context, int networkModes, int cdmaSubscription) {
+    public jflteRIL(Context context, int preferredNetworkType, int cdmaSubscription) {
         this(context, networkModes, cdmaSubscription, null);
         mAudioManager = (AudioManager)mContext.getSystemService(Context.AUDIO_SERVICE);
     }
@@ -679,5 +680,18 @@ public class jflteRIL extends RIL implements CommandsInterface {
           failCause.vendorCause = p.readString();
         }
         return failCause;
+    }
+
+    @Override
+    public void setPreferredNetworkType(int networkType , Message response) {
+        riljLog("setPreferredNetworkType: " + networkType);
+
+        if (!setPreferredNetworkTypeSeen) {
+            riljLog("Need to reboot modem!");
+            setRadioPower(false, null);
+            setPreferredNetworkTypeSeen = true;
+        }
+
+        super.setPreferredNetworkType(networkType, response);
     }
 }
