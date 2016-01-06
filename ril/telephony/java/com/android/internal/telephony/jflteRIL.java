@@ -69,7 +69,7 @@ public class jflteRIL extends RIL implements CommandsInterface {
     public static final long SEND_SMS_TIMEOUT_IN_MS = 30000;
 
     public jflteRIL(Context context, int preferredNetworkType, int cdmaSubscription) {
-        this(context, networkModes, cdmaSubscription, null);
+        this(context, preferredNetworkType, cdmaSubscription, null);
         mAudioManager = (AudioManager)mContext.getSystemService(Context.AUDIO_SERVICE);
     }
 
