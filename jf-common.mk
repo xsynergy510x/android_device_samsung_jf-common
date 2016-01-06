@@ -197,6 +197,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libsamsung_symbols
 
+# Snapdragon Camera
+PRODUCT_PACKAGES += \
+    Snap
+
 # Wifi
 PRODUCT_PACKAGES += \
     libnetcmdiface \
