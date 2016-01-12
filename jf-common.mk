@@ -91,8 +91,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/bin/boot_leds:system/bin/boot_leds
 
-# Camera Wrapper
+# Camera
 PRODUCT_PACKAGES += \
+    Snap \
     camera.msm8960
 
 # CRDA
@@ -196,10 +197,6 @@ PRODUCT_PACKAGES += \
 # Samsung symbols
 PRODUCT_PACKAGES += \
     libsamsung_symbols
-
-# Snapdragon Camera
-PRODUCT_PACKAGES += \
-    Snap
 
 # Wifi
 PRODUCT_PACKAGES += \
