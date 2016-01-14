@@ -53,6 +53,9 @@ on boot
     write /sys/devices/i2c-3/3-005b/update_fw 1
     start qcamerasvr
 
+    # Start custom boot LED pattern
+    start boot_leds
+
 on post-fs-data
     mkdir /data/tombstones 0771 system system
     mkdir /data/qcks 0771 system system
@@ -343,3 +346,7 @@ service insthk /system/bin/insthk
 
 on property:sys.qseecomd.enable=true
     start insthk
+
+on property:sys.boot_completed=1
+    start boot_sqlite
+    start boot_trim
