@@ -143,10 +143,4 @@ on enable-low-power
     # Set iosched
     setprop sys.io.scheduler row
 
-    # Set default CPU frequencies
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1674000
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 1458000
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 1458000
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 1458000
-
     rm /data/system/perfd/default_values
