@@ -192,6 +192,7 @@ PRODUCT_PACKAGES += \
     init.qcom.power.rc \
     init.qcom.usb.rc \
     init.target.rc \
+    init.viper.sh \
     ueventd.qcom.rc
 
 # Samsung symbols
