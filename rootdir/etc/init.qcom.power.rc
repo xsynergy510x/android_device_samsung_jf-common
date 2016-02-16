@@ -126,7 +126,7 @@ on enable-low-power
     write /sys/devices/system/cpu/cpufreq/interactive/target_loads "98 384000:40 702000:80 1026000:95"
     write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 30000
     write /sys/devices/system/cpu/cpufreq/interactive/timer_slack 80000
-    write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor ondemand
+    write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor simple
 
     # sched
     write /dev/cpuctl/cpu.notify_on_migrate 1
