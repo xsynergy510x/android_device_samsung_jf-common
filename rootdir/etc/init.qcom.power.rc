@@ -26,6 +26,7 @@
 #
 
 on early-init
+    write /sys/devices/system/cpu/cpufreq/interactive/boost 1
     setprop sys.io.scheduler noop
 
 on boot
@@ -107,7 +108,6 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu3/online 1
 
     # interactive
-    write /sys/devices/system/cpu/cpufreq/interactive/boost 1
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
@@ -116,16 +116,15 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 384000
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 384000
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq 384000
-    write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay "20000 810000:60000 1026000:150000"
-    write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 99
-    write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 384000
+    write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay 20000
+    write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 90
+    write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 810000
     write /sys/devices/system/cpu/cpufreq/interactive/io_is_busy 0
-    write /sys/devices/system/cpu/cpufreq/interactive/max_freq_hysteresis 100000
-    write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 40000
+    write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 90000
     write /sys/devices/system/cpu/cpufreq/interactive/sampling_down_factor 100000
-    write /sys/devices/system/cpu/cpufreq/interactive/target_loads "98 384000:40 810000:80 1026000:95"
+    write /sys/devices/system/cpu/cpufreq/interactive/target_loads 90
     write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 30000
-    write /sys/devices/system/cpu/cpufreq/interactive/timer_slack 80000
+    write /sys/devices/system/cpu/cpufreq/interactive/timer_slack 50000
     write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor simple
 
     # sched
@@ -133,8 +132,8 @@ on enable-low-power
 
     # cpu-boost
     write /sys/module/cpu_boost/parameters/boost_ms 0
-    write /sys/module/cpu_boost/parameters/input_boost_freq 0:0 1:0 2:0 3:0
-    write /sys/module/cpu_boost/parameters/input_boost_ms 0
+    write /sys/module/cpu_boost/parameters/input_boost_freq 0:1134000 1:0 2:0 3:0
+    write /sys/module/cpu_boost/parameters/input_boost_ms 20
     write /sys/module/cpu_boost/parameters/load_based_syncs 0
     write /sys/module/cpu_boost/parameters/migration_load_threshold 0
 
