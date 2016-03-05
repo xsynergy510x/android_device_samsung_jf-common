@@ -36,9 +36,6 @@ on property:sys.boot_completed=1
     # Disable Interactive thread boosting
     write /sys/devices/system/cpu/cpufreq/interactive/boost 0
 
-    # Stop MPDecision so the option shows
-    start mpdecision
-
 on charger
     mount ext4 /dev/block/platform/msm_sdcc.1/by-name/system /system wait ro
     copy /system/etc/battery_charging_temp.data /sys/class/power_supply/battery/batt_temp_table
